@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .input {
-    @apply border-[1px] border-black rounded-sm p-1;
+  .signup-input {
+    @apply appearance-none border-[1px] border-gray-300 rounded-lg px-4 py-2 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg;
   }
 }
