@@ -1,14 +1,16 @@
 const express = require("express");
-const {
-  createRestaurant,
-  getRestaurant,
-  editRestaurant,
-  deleteRestaurant,
-} = require("../Controllers/restaurantController");
+const restaurantController = require("../Controllers/restaurantController");
 const router = express.Router();
 
-router.use("/").get(getRestaurant);
+router
+  .use("/")
+  .get(restaurantController.getAll)
+  .post(restaurantController.create);
 
-router.use("/create").post(createRestaurant);
-router.use("/edit").put(editRestaurant);
-router.use("/delete").delete(deleteRestaurant);
+router
+  .use("/:id")
+  .get(restaurantController.getOne)
+  .put(restaurantController.edit)
+  .delete(restaurantController.delete);
+
+module.exports = router;

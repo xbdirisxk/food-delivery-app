@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 
 const menuSchema = mongoose.Schema({
-  title: {
+  name: String,
+  price: Number,
+  description: String,
+  imgUrl: String,
+  category: {
     type: String,
-    required: true,
+    enum: ["breakfast", "lunch", "dinner", "dessert", "drinks", "fastfood"],
+  },
+  restaurant: {
+    type: mongoose.Types.ObjectId,
+    ref: "Restaurant",
   },
 });
 

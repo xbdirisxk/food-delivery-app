@@ -5,10 +5,6 @@ const restaurantSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    required: true,
-  },
   city: {
     type: String,
     required: true,
@@ -19,6 +15,10 @@ const restaurantSchema = mongoose.Schema({
   },
   phone: {
     type: Number,
+    required: true,
+  },
+  imgUrl: {
+    type: String,
     required: true,
   },
   owner: {
