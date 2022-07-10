@@ -4,7 +4,7 @@ const Restaurant = require("../Models/restaurantModel");
 exports.getAll = async (req, res) => {
   try {
     const restaurants = await Restaurant.find({});
-    if (!restaurant)
+    if (!restaurants)
       return res.status(404).json({ mssge: "no retaurants found" });
     res.json({ result: restaurants.length, data: restaurants });
   } catch (err) {
@@ -30,16 +30,17 @@ exports.getOne = async (req, res) => {
 /*create restaurant*/
 exports.create = async (req, res) => {
   try {
+    console.log(zreq.body);
     const restaurant = await Restaurant.findOne({ name: req.body.name });
     if (restaurant)
       return res.status(404).json({ mssge: "retaurant name already exist" });
 
     // create restaurant
     await Restaurant.create(req.body);
-    res.json({ mssge: "restaurant CREATED ✅" });
+    res.json({ success: "restaurant CREATED ✅" });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ mssge: "error" });
+    res.status(400).json({ mssge: err });
   }
 };
 

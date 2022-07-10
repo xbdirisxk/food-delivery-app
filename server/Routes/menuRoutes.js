@@ -3,7 +3,7 @@ const menuController = require("../Controllers/menuController");
 
 const router = express.Router();
 
-router.use("/").get(menuController.getAll).post(menuController.add);
-router.use("/:id").put(menuController.edit).delete(menuController.remove);
+router.route("/").get(menuController.getAll).post(menuController.add);
+router.route("/:id").put(menuController.edit).delete(menuController.remove);
 
 module.exports = router;

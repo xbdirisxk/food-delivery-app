@@ -24,8 +24,10 @@ const restaurantSchema = mongoose.Schema({
   owner: {
     type: mongoose.Types.ObjectId,
     ref: "User",
-    required: true,
+    // required: true,
   },
 });
 
-module.exports = mongoose.model("Restaunt", restaurantSchema);
+const restaurantModel = mongoose.model("Restaurant", restaurantSchema);
+
+module.exports = restaurantModel;
