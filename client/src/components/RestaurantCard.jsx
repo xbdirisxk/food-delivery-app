@@ -3,7 +3,10 @@ import resPic from "../images/restaurants/res1.jpg";
 const restaurantCard = ({ restaurant }) => {
   return (
     <div>
-      <a className="relative block bg-black group rounded-md" href="/#">
+      <a
+        className="relative block bg-black group rounded-md"
+        href="/restaurant-profile"
+      >
         <img
           className="absolute inset-0 object-cover w-full h-full transition-opacity opacity-75 group-hover:opacity-50 rounded-md"
           src={resPic}

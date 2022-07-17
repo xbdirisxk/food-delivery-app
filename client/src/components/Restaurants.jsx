@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-
-const axios = require("axios");
+import axios from "axios";
 
 const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -13,14 +12,14 @@ const Restaurants = () => {
       .then((res) => setRestaurants(res.data.data));
   }, []);
 
-  // why useEffect rerender four times ?
-  console.log(restaurants);
-
   return (
-    <div className="flex gap-2 my-6 mx-10">
-      {restaurants.slice(0, 4).map((item) => (
-        <RestaurantCard key={item._id} restaurant={item} />
-      ))}
+    <div className="my-6 mx-10">
+      <h1 className="mb-3 text-2xl font-bold">Popular Restaurant</h1>
+      <div className="flex gap-2">
+        {restaurants.slice(0, 4).map((item) => (
+          <RestaurantCard key={item._id} restaurant={item} />
+        ))}
+      </div>
     </div>
   );
 };
