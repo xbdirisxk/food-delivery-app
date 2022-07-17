@@ -5,11 +5,11 @@ exports.getAll = async (req, res) => {
   try {
     const restaurants = await Restaurant.find({});
     if (!restaurants)
-      return res.status(404).json({ mssge: "no retaurants found" });
+      return res.status(404).json({ error: "no retaurants found" });
     res.json({ result: restaurants.length, data: restaurants });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ mssge: "error" });
+    res.status(400).json({ error: "error" });
   }
 };
 
@@ -18,29 +18,29 @@ exports.getOne = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
     if (!restaurant)
-      return res.status(404).json({ mssge: "retaurant not found" });
+      return res.status(404).json({ error: "retaurant not found" });
 
-    res.json({ sucess: restaurant });
+    res.json({ result: restaurant });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ mssge: "error" });
+    res.status(400).json({ error: "error" });
   }
 };
 
 /*create restaurant*/
 exports.create = async (req, res) => {
   try {
-    console.log(zreq.body);
+    console.log(req.body);
     const restaurant = await Restaurant.findOne({ name: req.body.name });
     if (restaurant)
-      return res.status(404).json({ mssge: "retaurant name already exist" });
+      return res.status(404).json({ error: "retaurant name already exist" });
 
     // create restaurant
     await Restaurant.create(req.body);
     res.json({ success: "restaurant CREATED ✅" });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ mssge: err });
+    res.status(400).json({ error: err });
   }
 };
 
@@ -48,10 +48,10 @@ exports.create = async (req, res) => {
 exports.edit = async (req, res) => {
   try {
     await Restaurant.findOneAndUpdate(req.params.id, req.body);
-    res.json({ mssge: "restaurant UPDATED" });
+    res.json({ success: "restaurant UPDATED" });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ mssge: "error" });
+    res.status(400).json({ error: "error" });
   }
 };
 
@@ -59,9 +59,9 @@ exports.edit = async (req, res) => {
 exports.delete = async (req, res) => {
   try {
     await Restaurant.findOneAndDelete(req.params.id, req.body);
-    res.json({ mssge: "DELETED" });
+    res.json({ success: "DELETED" });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ mssge: "error" });
+    res.status(400).json({ error: "error" });
   }
 };

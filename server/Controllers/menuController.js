@@ -4,11 +4,11 @@ const Menu = require("../Models/menuModel");
 exports.getAll = async (req, res) => {
   try {
     const menu = await Menu.find({});
-    if (!menu) return res.status(404).json({ messge: "no menu found" });
+    if (!menu) return res.status(404).json({ message: "no menu found" });
 
     res.json({ results: menu.length, data: menu });
   } catch (err) {
-    res.status(400).json({ mssge: "Error" });
+    res.status(400).json({ message: "Error" });
   }
 };
 
@@ -17,13 +17,13 @@ exports.add = async (req, res) => {
   try {
     const menu = await Menu.findOne({ name: req.body.name });
     if (menu)
-      return res.status(400).json({ messge: "menu name already exist" });
+      return res.status(400).json({ message: "menu name already exist" });
 
     // create menu
     await Menu.create(req.body);
     res.json({ success: "Added ✅" });
   } catch (err) {
-    res.status(400).json({ mssge: "Error" });
+    res.status(400).json({ message: "Error" });
   }
 };
 
@@ -34,7 +34,7 @@ exports.edit = async (req, res) => {
     await Menu.findByIdAndUpdate(req.params.id, req.body);
     res.json({ success: "Here" });
   } catch (err) {
-    res.status(400).json({ mssge: "Error" });
+    res.status(400).json({ message: "Error" });
   }
 };
 
@@ -45,6 +45,6 @@ exports.remove = async (req, res) => {
     await Menu.findByIdAndDelete(req.params.id);
     res.json({ success: "Here" });
   } catch (err) {
-    res.status(400).json({ mssge: "Error" });
+    res.status(400).json({ message: "Error" });
   }
 };
