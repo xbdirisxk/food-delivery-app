@@ -1,8 +1,8 @@
-const bcrypt = require("bcrypt");
+import { Request, Response } from "express";
+import bcrypt from "bcrypt";
+import User from "../Models/userModel";
 
-const User = require("../Models/userModel");
-
-exports.signUp = async (req, res) => {
+export const signUp = async (req: Request, res: Response) => {
   try {
     const userFound = await User.findOne({ username: req.body.username });
     const emailFound = await User.findOne({ email: req.body.email });
@@ -22,7 +22,7 @@ exports.signUp = async (req, res) => {
     /* check password match */
     if (req.body.password !== req.body.confirmPassword)
       return res.status(400).json({ error: "password confirmation not match" });
-    delete req.body.confirmPassword; // delete the passwordComfirm field from the object after checked
+    delete req.body.confirmPassword; // remove the passwordComfirm field after checked
 
     /* password encryption */
     const encryptedPassword = await bcrypt.hash(req.body.password, 10);
@@ -37,7 +37,7 @@ exports.signUp = async (req, res) => {
   }
 };
 
-exports.signIn = async (req, res) => {
+export const signIn = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     if (!user)
@@ -56,7 +56,3 @@ exports.signIn = async (req, res) => {
     res.status(400).json({ error: "error" });
   }
 };
-
-// exports.resetPassword = (req, res) => {
-//   res.status(200).json({ message: "password changed" });
-// };

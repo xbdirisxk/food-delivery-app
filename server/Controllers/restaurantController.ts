@@ -1,7 +1,8 @@
-const Restaurant = require("../Models/restaurantModel");
+import { Request, Response } from "express";
+import Restaurant from "../Models/restaurantModel";
 
 /*get all restaurants*/
-exports.getAll = async (req, res) => {
+export const getAll = async (req: Request, res: Response) => {
   try {
     const restaurants = await Restaurant.find({});
     if (!restaurants)
@@ -14,7 +15,7 @@ exports.getAll = async (req, res) => {
 };
 
 /*get one restaurant*/
-exports.getOne = async (req, res) => {
+export const getOne = async (req: Request, res: Response) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
     if (!restaurant)
@@ -28,7 +29,7 @@ exports.getOne = async (req, res) => {
 };
 
 /*create restaurant*/
-exports.create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   try {
     console.log(req.body);
     const restaurant = await Restaurant.findOne({ name: req.body.name });
@@ -45,7 +46,7 @@ exports.create = async (req, res) => {
 };
 
 /*edit restaurant*/
-exports.edit = async (req, res) => {
+export const edit = async (req: Request, res: Response) => {
   try {
     await Restaurant.findOneAndUpdate(req.params.id, req.body);
     res.json({ success: "restaurant UPDATED" });
@@ -56,7 +57,7 @@ exports.edit = async (req, res) => {
 };
 
 /*delete restaurant*/
-exports.delete = async (req, res) => {
+export const deleteRestaurant = async (req: Request, res: Response) => {
   try {
     await Restaurant.findOneAndDelete(req.params.id, req.body);
     res.json({ success: "DELETED" });

@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 mongoose
   .connect(
     `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@cluster0.zcn5q.mongodb.net/test`
   )
-  .then(console.log("Connected to DB ✅"));
+  .then((): void => console.log("Connected to DB ✅"));

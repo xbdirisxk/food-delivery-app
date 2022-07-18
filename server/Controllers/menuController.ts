@@ -1,7 +1,8 @@
-const Menu = require("../Models/menuModel");
+import { Request, Response } from "express";
+import Menu from "../Models/menuModel";
 
 /* get all Menu */
-exports.getAll = async (req, res) => {
+export const getAll = async (req: Request, res: Response) => {
   try {
     const menu = await Menu.find({});
     if (!menu) return res.status(404).json({ message: "no menu found" });
@@ -13,7 +14,7 @@ exports.getAll = async (req, res) => {
 };
 
 /* add new Menu */
-exports.add = async (req, res) => {
+export const add = async (req: Request, res: Response) => {
   try {
     const menu = await Menu.findOne({ name: req.body.name });
     if (menu)
@@ -28,7 +29,7 @@ exports.add = async (req, res) => {
 };
 
 /* edit Menu */
-exports.edit = async (req, res) => {
+export const edit = async (req: Request, res: Response) => {
   try {
     // update menu
     await Menu.findByIdAndUpdate(req.params.id, req.body);
@@ -39,7 +40,7 @@ exports.edit = async (req, res) => {
 };
 
 /* delete Menu */
-exports.remove = async (req, res) => {
+export const remove = async (req: Request, res: Response) => {
   try {
     // remove  menu
     await Menu.findByIdAndDelete(req.params.id);
