@@ -2,8 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .signup-input {
-    @apply appearance-none border-[1px] border-gray-300 rounded-lg px-4 py-2 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  @apply bg-gray-50;
+}
+
+.btn-light {
+  @apply bg-gray-100 px-5 py-3 rounded-full text-sm font-medium;
+}
+.btn-dark {
+  @apply bg-black px-5 py-3 rounded-full text-sm font-medium text-white;
+}
+
+.input {
+  @apply px-3 py-2 rounded-sm bg-gray-100 text-sm;
+}
+
+table,
+tr,
+th,
+td {
+  @apply border border-gray-400 py-1 px-4;
 }
