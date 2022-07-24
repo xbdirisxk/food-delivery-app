@@ -3,11 +3,17 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 function Signup() {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const navigate = useNavigate();
   async function handleOnSubmit() {
     try {
-      const res = await axios.post("http://localhost:8000/user/", inputs);
+      const res = await axios.post("http://localhost:8000/user/signup", inputs);
+      console.log("res:", res);
       toast.success(res.data.message);
       navigate("/home");
     } catch (e) {
@@ -27,7 +33,7 @@ function Signup() {
             type="text"
             placeholder="Name"
             className="px-3 py-2 rounded-sm bg-gray-100 text-sm "
-            onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
+            onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
           />
           <input
             type="text"

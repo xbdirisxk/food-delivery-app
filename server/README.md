@@ -1,6 +1,4 @@
-# Batch 103 final project
-
-We will be doing a food delivery application for our final project. It will be a challenge but it will also be a huge learning curve 💪🏾
+# Food delivery backend
 
 The project will consist of the following features:
 

@@ -1,6 +1,19 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import User from "../Models/userModel";
+// import { Jwt } from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
+
+const createToken = async (value: any) => {
+  const token = await jwt.sign(
+    {
+      expireAt: "5days",
+      data: value,
+    },
+    process.env.JWTSECRET
+  );
+  return token;
+};
 
 export const signUp = async (req: Request, res: Response) => {
   try {
@@ -14,10 +27,10 @@ export const signUp = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "incorrect Email format" });
 
     /* check password length */
-    if (req.body.password.length < 7)
+    if (req.body.password.length < 4)
       return res
         .status(400)
-        .json({ error: "password must be atleast 7 characters" });
+        .json({ error: "password must be atleast 4 characters" });
 
     /* check password match */
     if (req.body.password !== req.body.confirmPassword)
@@ -30,10 +43,12 @@ export const signUp = async (req: Request, res: Response) => {
     req.body.password = encryptedPassword;
 
     /* create user */
+
+    const token = await createToken({ email: req.body.email });
     await User.create(req.body);
-    res.status(200).json({ success: "user created ✅" });
+    res.status(200).json({ success: "user created ✅", token });
   } catch (err) {
-    res.status(400).json({ error: "error" });
+    res.status(400).json({ error: err });
   }
 };
 
