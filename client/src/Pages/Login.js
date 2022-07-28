@@ -5,26 +5,25 @@ import axios from "axios";
 import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-  const [setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
 
-  async function handleOnSubmit() {
-    console.log(inputs);
+  const handleOnSubmit = async () => {
     try {
       const res = await axios.post("http://localhost:8000/user/login", inputs);
       localStorage.setItem("token", res.data.token);
       toast.success(res.data.success);
       setUser(true);
       navigate("/");
-      console.log("===> ", res);
     } catch (err) {
-      toast.error(err.response.data.error);
+      if (err.response) toast.error(err.response.data.error);
+      console.log("error", err);
     }
-  }
+  };
 
   return (
     <div className="flex justify-center mt-10 ">

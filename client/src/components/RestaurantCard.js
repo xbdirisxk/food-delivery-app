@@ -2,7 +2,6 @@ import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const RestaurantCard = ({ restaurant }) => {
-  console.log("------> ", restaurant);
   return (
     <Link to="/restaurant">
       <div className="flex bg-white rounded-md drop-shadow-md space-x-2">

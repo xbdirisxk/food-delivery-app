@@ -49,7 +49,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-2 py-2 gap-4">
           {restaurants.map((restaurant) => (
-            <RestaurantCard restaurant={restaurant} />
+            <RestaurantCard restaurant={restaurant} key={restaurant.name} />
           ))}
         </div>
       </div>
