@@ -1,16 +1,7 @@
 import { FaSearch, FaAngleRight } from "react-icons/fa";
-import RestaurantCard from "../components/RestaurantCard";
+import RestaurantCard from "../Components/RestaurantCard";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 function Home() {
-  const [restaurants, setRestaurants] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/restaurant")
-      .then((res) => setRestaurants(res.data.restaurants));
-  });
   return (
     <div>
       {/* BANNER */}
@@ -47,9 +38,10 @@ function Home() {
           </div>
         </div>
         <div className="grid grid-cols-2 py-2 gap-4">
-          {restaurants.map((restaurant) => (
-            <RestaurantCard restaurant={restaurant} />
-          ))}
+          <RestaurantCard name={"Sultan"} />
+          <RestaurantCard name={"Fish and steak"} />
+          <RestaurantCard name={"25"} />
+          <RestaurantCard name={"Mocha"} />
         </div>
       </div>
       {/* REST LIST */}
