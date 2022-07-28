@@ -1,5 +1,5 @@
 import { FaSearch } from "react-icons/fa";
-import RestaurantCard from "../Components/RestaurantCard";
+import RestaurantCard from "../components/RestaurantCard";
 function List() {
   return (
     <div>

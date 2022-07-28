@@ -1,4 +1,4 @@
-import AdminNav from "../../Components/AdminNav";
+import AdminNav from "../../components/AdminNav";
 function MenuForm() {
   return (
     <div>

@@ -1,4 +1,4 @@
-import AdminNav from "../../Components/AdminNav";
+import AdminNav from "../../components/AdminNav";
 import { MdOutlineRemoveRedEye, MdOutlineRemoveCircle } from "react-icons/md";
 function Order() {
   return (

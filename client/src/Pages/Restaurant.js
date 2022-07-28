@@ -1,7 +1,7 @@
-import MenuCard from "../Components/MenuCard";
+import MenuCard from "../components/MenuCard";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import OrderCard from "../Components/OrderCard";
+import OrderCard from "../components/OrderCard";
 function Restaurant() {
   return (
     <div className="p-10">

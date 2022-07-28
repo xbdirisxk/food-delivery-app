@@ -1,4 +1,4 @@
-import OrderCard from "../Components/OrderCard";
+import OrderCard from "../components/OrderCard";
 
 function Order() {
   return (

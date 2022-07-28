@@ -1,4 +1,4 @@
-import AdminNav from "../../Components/AdminNav";
+import AdminNav from "../../components/AdminNav";
 import { MdModeEdit, MdOutlineRemoveCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 function Menu() {

@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
-import Header from "./Components/Header";
+import Header from "./components/Header";
 import Restaurant from "./Pages/Restaurant";
 import Order from "./Pages/Order";
 import List from "./Pages/List";
@@ -14,10 +15,20 @@ import Profile from "./Pages/Admin/Profile";
 import NotFound from "./Pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "./context/UserContext";
+import Protect from "./Protect";
 
 function App() {
+  const [user, setUser] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUser(true);
+    }
+  }, []);
+
   return (
-    <>
+    <UserContext.Provider value={[user, setUser]}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -26,11 +37,13 @@ function App() {
         <Route path="/list" element={<List />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin/restaurant" element={<RestaurantDetails />} />
-        <Route path="/admin/order" element={<OrderList />} />
-        <Route path="/admin/menu/new" element={<MenuForm />} />
-        <Route path="/admin/menu" element={<Menu />} />
-        <Route path="/admin/profile" element={<Profile />} />
+        <Route path="/admin" element={<Protect />}>
+          <Route path="restaurant" element={<RestaurantDetails />} />
+          <Route path="order" element={<OrderList />} />
+          <Route path="menu/new" element={<MenuForm />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer
@@ -44,7 +57,7 @@ function App() {
         draggable
         pauseOnHover
       />
-    </>
+    </UserContext.Provider>
   );
 }
 
