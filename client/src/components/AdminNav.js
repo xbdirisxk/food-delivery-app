@@ -6,7 +6,8 @@ import {
   MdLogout,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
-function AdminNav() {
+
+const AdminNav = () => {
   return (
     <div className="flex justify-center space-x-2 my-5">
       <Link to="/admin/profile">
@@ -34,5 +35,5 @@ function AdminNav() {
       </div>
     </div>
   );
-}
+};
 export default AdminNav;

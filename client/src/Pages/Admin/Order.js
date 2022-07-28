@@ -1,6 +1,7 @@
 import AdminNav from "../../components/AdminNav";
 import { MdOutlineRemoveRedEye, MdOutlineRemoveCircle } from "react-icons/md";
-function Order() {
+
+const Order = () => {
   return (
     <div>
       <AdminNav />
@@ -30,6 +31,6 @@ function Order() {
       </div>
     </div>
   );
-}
+};
 
 export default Order;

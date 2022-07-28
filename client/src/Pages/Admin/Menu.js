@@ -1,7 +1,8 @@
 import AdminNav from "../../components/AdminNav";
 import { MdModeEdit, MdOutlineRemoveCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
-function Menu() {
+
+const Menu = () => {
   return (
     <div>
       <AdminNav />
@@ -44,6 +45,6 @@ function Menu() {
       </div>
     </div>
   );
-}
+};
 
 export default Menu;

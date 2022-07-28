@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
-function Signup() {
+import { UserContext } from "../context/UserContext";
+
+const Signup = () => {
+  const [setUser] = useContext(UserContext);
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -10,14 +13,16 @@ function Signup() {
     confirmPassword: "",
   });
   const navigate = useNavigate();
+
   async function handleOnSubmit() {
     try {
       const res = await axios.post("http://localhost:8000/user/signup", inputs);
-      console.log("res:", res);
-      toast.success(res.data.message);
-      navigate("/home");
-    } catch (e) {
-      toast.error(e.response.data.message);
+      localStorage.setItem("token", res.data.token);
+      toast.success(res.data.success);
+      setUser(true);
+      navigate("/");
+    } catch (err) {
+      toast.error(err.response.data.error);
     }
   }
 
@@ -70,6 +75,6 @@ function Signup() {
       </div>
     </div>
   );
-}
+};
 
 export default Signup;

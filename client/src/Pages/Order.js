@@ -1,6 +1,6 @@
 import OrderCard from "../components/OrderCard";
 
-function Order() {
+const Order = () => {
   return (
     <div>
       <h2 className="text-center font-bold text-3xl mt-10">Place your order</h2>
@@ -45,6 +45,6 @@ function Order() {
       </div>
     </div>
   );
-}
+};
 
 export default Order;

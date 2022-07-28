@@ -1,6 +1,6 @@
 import { FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 
-function MenuCard() {
+const MenuCard = () => {
   return (
     <div className="border rounded-sm flex">
       <div className="flex-1 flex flex-col justify-center pl-3">
@@ -21,6 +21,6 @@ function MenuCard() {
       </div>
     </div>
   );
-}
+};
 
 export default MenuCard;

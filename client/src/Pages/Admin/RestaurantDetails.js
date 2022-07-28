@@ -1,5 +1,6 @@
 import AdminNav from "../../components/AdminNav";
-function RestaurantDetails() {
+
+const RestaurantDetails = () => {
   return (
     <div>
       <AdminNav />
@@ -44,6 +45,6 @@ function RestaurantDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default RestaurantDetails;

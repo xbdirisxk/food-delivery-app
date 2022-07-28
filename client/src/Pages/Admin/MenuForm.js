@@ -1,5 +1,6 @@
 import AdminNav from "../../components/AdminNav";
-function MenuForm() {
+
+const MenuForm = () => {
   return (
     <div>
       <AdminNav />
@@ -29,6 +30,6 @@ function MenuForm() {
       </div>
     </div>
   );
-}
+};
 
 export default MenuForm;

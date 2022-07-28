@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
-function Header() {
+const Header = () => {
   const [user] = useContext(UserContext);
   return (
     <div className="flex justify-between items-center py-5 px-10 bg-white">
@@ -36,6 +36,6 @@ function Header() {
       </div>
     </div>
   );
-}
+};
 
 export default Header;

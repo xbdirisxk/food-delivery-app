@@ -1,5 +1,6 @@
 import AdminNav from "../../components/AdminNav";
-function Profile() {
+
+const Profile = () => {
   return (
     <div>
       <AdminNav />
@@ -56,6 +57,6 @@ function Profile() {
       </div>
     </div>
   );
-}
+};
 
 export default Profile;

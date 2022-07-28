@@ -1,6 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import RestaurantCard from "../components/RestaurantCard";
-function List() {
+
+const List = () => {
   return (
     <div>
       {/* SEARCH BOX */}
@@ -40,6 +41,6 @@ function List() {
       {/* LIST */}
     </div>
   );
-}
+};
 
 export default List;

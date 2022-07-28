@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "./context/UserContext";
 import Protect from "./Protect";
 
-function App() {
+const App = () => {
   const [user, setUser] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -59,6 +59,6 @@ function App() {
       />
     </UserContext.Provider>
   );
-}
+};
 
 export default App;
